@@ -1,0 +1,12 @@
+_pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.git
+.gitignore
+*.md
+tests/
+.pytest_cache

@@ -27,6 +27,10 @@ terraform.tfvars
 .DS_Store
 Thumbs.db
 
+# Azure local storage
+__azurite_*
+.azure/
+
 # Secrets (never commit)
 *.pem
 *.key

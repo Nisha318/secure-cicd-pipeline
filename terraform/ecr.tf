@@ -18,6 +18,21 @@ resource "aws_ecr_repository" "app" {
   }
 }
 
+# Enable Enhanced Scanning for better vulnerability detection
+resource "aws_ecr_registry_scanning_configuration" "enhanced" {
+  scan_type = "ENHANCED"
+
+  rule {
+    scan_frequency = "SCAN_ON_PUSH"
+    
+    repository_filter {
+      filter      = "${var.project_name}-app"
+      filter_type = "REPOSITORY_NAME"
+    }
+  }
+}
+
+
 # ECR Lifecycle Policy - keep costs down by cleaning old images
 resource "aws_ecr_lifecycle_policy" "app" {
   repository = aws_ecr_repository.app.name

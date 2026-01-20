@@ -82,7 +82,7 @@ terraform output
 ```bash
 # Build container
 cd app
-docker build -t secure-cicd-demo:latest .
+docker build --platform linux/amd64 -t secure-cicd-demo:latest .
 
 # Authenticate to ECR
 aws ecr get-login-password --region us-east-1 | \
@@ -107,7 +107,7 @@ pre-commit install
 
 # Build and test locally
 cd app
-docker build -t secure-cicd-demo:local .
+docker build --platform linux/amd64 -t secure-cicd-demo:local .
 docker run -d --name test-app -p 8080:8080 \
   -e ENVIRONMENT=development \
   secure-cicd-demo:local

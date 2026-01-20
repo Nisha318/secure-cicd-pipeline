@@ -21,7 +21,7 @@ pre-commit run --all-files || echo "Some pre-commit checks failed, but continuin
 # Build Docker image locally
 echo "🐳 Building Docker image..."
 cd app
-docker build -t secure-cicd-demo:local .
+docker build --platform linux/amd64 -t secure-cicd-demo:local .
 
 # Run Trivy scan locally (if installed via Docker)
 echo "🔒 Scanning container image with Trivy..."
